@@ -26,19 +26,19 @@ public class BuildTreeTest {
 			map.put(j, i++);
 		}
 		
-		return build(0, inorder.length);
+		return build(0, inorder.length-1);
 		
     }
 	public TreeNode build(int inleft,int inright){
 		
-		if (inleft == inright) {
+		if (inleft > inright) {
 			return null;
 		}
 		int root_index = preorder[pre_index];
 		TreeNode root = new TreeNode(root_index);
 		int index = map.get(root_index);
 		pre_index ++;
-		root.left = build(inleft, index);
+		root.left = build(inleft, index-1);
 		root.right = build(index+1, inright);
 		return root;
 	}
